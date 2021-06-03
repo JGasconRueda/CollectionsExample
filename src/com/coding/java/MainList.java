@@ -7,10 +7,10 @@ public class MainList {
     public static void main(String[] args) {
         // LIST
         // Implementaciones de List
-        List listA = new ArrayList();
-        List listB = new LinkedList();
-        List listC = new Vector();
-        List listD = new Stack();
+        ArrayList arrayList = new ArrayList();
+        LinkedList<Integer> linkedList = new LinkedList();
+        Vector vector = new Vector();
+        Stack stack = new Stack();
 
         // Generic list
         List<String> listaString = new ArrayList<String>();
@@ -22,11 +22,19 @@ public class MainList {
         listaString.add(0,"pepe"); // Insert en un indice especifico
         List<String> listaDestino = new ArrayList<>();
         listaDestino.addAll(listaString);
+        linkedList.addFirst(2);
+        linkedList.addLast(5);
+
 
         // Get elements
         String element0 = listaString.get(0);
         String element1 = listaString.get(1);
         String element2 = listaString.get(2);
+        int firstElement = linkedList.getFirst();// constant-time operation
+        int lastElement = linkedList.getLast(); // constant-time operations.
+
+        // Set elements
+        listaString.set(0,"David");
 
         // Find Elements
         int index1 = listaString.indexOf(element1);
@@ -42,6 +50,9 @@ public class MainList {
         listaString.remove(element0);
         listaString.remove(0);
         listaString.clear();//Elimina todos los elementos
+        int firstElementRemove = linkedList.removeFirst();
+        int lastElementRemove = linkedList.removeLast();
+        boolean removed = linkedList.removeFirstOccurrence(1);
 
         // RetainAll
         listaString.retainAll(listaDestino);
@@ -62,6 +73,14 @@ public class MainList {
         // Convert Array to List (with cast)
         String[] values = new String[]{ "one", "two", "three" };
         List<String> list = (List<String>) Arrays.asList(values);
+
+        // Método factoria (Java 9)
+        List<Integer> miListaInt = List.of(3, 1, 4);
+
+        // El método of construye colecciones inmutables.
+        // Para permitir modificar y añadir elementos, tendríamos que recurrir al
+        // constructor de la colección que deseemos
+        List<Integer> miListaIntMod = new ArrayList<Integer>(List.of(3, 1, 4));
 
         //Sort List
         Collections.sort(list);
